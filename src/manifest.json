@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/BohemianCoding/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
+  "icon": "icon.png",
+  "identifier": "com.malakatonez.list-generator",
+  "name": "List Generator",
+  "authorEmail": "hola@luciagomez.me",
+  "description": "Hola 2",
+  "version": "0.1",
+
+
+  "commands": [
+    {
+      "name": "Vertical list",
+      "identifier": "com.malakatonez.list-generator.generate-vertical",
+      "handlers":{
+        "run":"generateVertical"
+      },
+      "script": "./my-command.js"
+    },
+    {
+      "name": "Horizontal list",
+      "identifier": "com.malakatonez.list-generator.generate-horizontal",
+      "handlers":{
+        "run":"generateHorizontal"
+      },
+      "script": "./my-command.js"
+    }
+  ],
+  "menu": {
+    "title": "List Generator",
+    "items": [
+      "com.malakatonez.list-generator.generate-horizontal",
+      "com.malakatonez.list-generator.generate-vertical"
+    ]
+  }
+}

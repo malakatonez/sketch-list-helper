@@ -12,17 +12,38 @@ const DIR_V = 1
 const DIR_H = 2
 
 const isSymbolMaster = layer => layer.class() == 'MSSymbolMaster'
+const isSymbolInstace = layer => layer.class() == 'MSSymbolInstance'
 
-const itemName = item => "Item " + (item+1)
+const itemName = item => "Item " + (item + 1)
 
 
 function getSelectedSymbolMaster() {
-  var layers = doc.selectedLayers
-  var artboard = context.document.currentPage().currentArtboard()
-  if (layers.length != 0 && artboard != null && isSymbolMaster(artboard)) {
-    return layers.layers[0]
+  var selectedLayers = doc.selectedLayers
+  var selectedObject = context.selection.firstObject();
+  if (selectedLayers.length != 0 && selectedObject != null && isSymbolMaster(selectedObject)) {
+    return selectedLayers.layers[0]
   }
   return null
+}
+
+function getSelectedSymbolInstance() {
+  var selectedLayers = doc.selectedLayers
+  var selectedObject = context.selection.firstObject();
+  if (selectedLayers.length != 0 && selectedObject != null && isSymbolInstace(selectedObject)) {
+    return selectedLayers.layers[0]
+  }
+  return null
+}
+
+
+//TODO: AÑADIR CONTROLES DE ERROR
+function getSelectedLayer() {
+  var layers = doc.selectedLayers
+  if (layers.length == 1) {
+    return layers.layers[0]
+  } else {
+    UI.message("Please select only one symbol")
+  }
 }
 
 
@@ -76,7 +97,6 @@ function generateFromSymbol(direction) {
             name: "List from " + symbolMaster.name
           })
           master.parent = symbolsPage
-          master.layers = createList(direction, symbolMaster, value)
 
           if (direction == DIR_V) {
             master.frame = new Rectangle(0, 0, symbolMaster.frame.width, symbolMaster.frame.height * value)
@@ -85,6 +105,8 @@ function generateFromSymbol(direction) {
             master.frame = new Rectangle(0, 0, symbolMaster.frame.width * value, symbolMaster.frame.height)
             master.smartLayout = SmartLayout.LeftToRight
           }
+
+          master.layers = createList(direction, symbolMaster, value)
         }
       }
     )
@@ -92,6 +114,26 @@ function generateFromSymbol(direction) {
 }
 
 
+
+function hideLastElements (elements, numberToHide) {
+  if (elements == null || numberToHide <= 0) {
+    return
+  }
+
+  // var hidden = 0
+
+  var reverseElements = elements.reverse()
+  for (var item = 0; item < 3; item++) {
+    var currentElement = reverseElements[item]
+
+    if (currentElement.id.search('/') == -1) { //rootSymbol
+      currentElement.value = "null"
+    }
+  }
+}
+
+
+// EXPORT METHODS
 export function generateHorizontal() {
   generateFromSymbol(DIR_H)
 }
@@ -99,4 +141,16 @@ export function generateHorizontal() {
 
 export function generateVertical() {
   generateFromSymbol(DIR_V)
+}
+
+export function hideListElements() {
+  var instance = getSelectedSymbolInstance()
+  if (instance == null) {
+    return
+  }
+
+//PRUEBA CON 3 (elimina solo el ultimo)
+  hideLastElements(instance.overrides, 3)
+  instance.resizeWithSmartLayout()
+  
 }

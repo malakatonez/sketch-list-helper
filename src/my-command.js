@@ -127,7 +127,7 @@ function hideLastElements (elements, numberToHide) {
     var currentElement = reverseElements[item]
 
     if (currentElement.id.search('/') == -1) { //rootSymbol
-      currentElement.value = "null"
+      currentElement.value = ''
     }
   }
 }
@@ -152,5 +152,5 @@ export function hideListElements() {
 //PRUEBA CON 3 (elimina solo el ultimo)
   hideLastElements(instance.overrides, 3)
   instance.resizeWithSmartLayout()
-  
+
 }

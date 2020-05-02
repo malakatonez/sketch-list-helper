@@ -1,40 +1,32 @@
 {
   "$schema": "https://raw.githubusercontent.com/BohemianCoding/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
   "icon": "icon.png",
-  "identifier": "com.malakatonez.list-generator",
+  "identifier": "com.malakatonez.list-helper",
   "name": "List Helper",
   "authorEmail": "hola@luciagomez.me",
   "description": "Hola 2",
-  "version": "0.2",
+  "version": "0.3",
 
   "commands": [
     {
-      "name": "Vertical list",
-      "identifier": "com.malakatonez.list-generator.generate-vertical",
+      "name": "Vertical",
+      "identifier": "com.malakatonez.list-helper.generate-vertical",
       "handlers":{
         "run":"generateVertical"
       },
       "script": "./my-command.js"
     },
     {
-      "name": "Horizontal list",
-      "identifier": "com.malakatonez.list-generator.generate-horizontal",
+      "name": "Horizontal",
+      "identifier": "com.malakatonez.list-helper.generate-horizontal",
       "handlers":{
         "run":"generateHorizontal"
       },
       "script": "./my-command.js"
     },
     {
-      "name": "Hide elements",
-      "identifier": "com.malakatonez.list-generator.hide-elements",
-      "handlers":{
-        "run":"hideListElements"
-      },
-      "script": "./my-command.js"
-    },
-    {
       "name": "Reduce to...",
-      "identifier": "com.malakatonez.list-generator.reduce-to",
+      "identifier": "com.malakatonez.list-helper.reduce-to",
       "handlers":{
         "run":"reduceListTo"
       },
@@ -44,10 +36,14 @@
   "menu": {
     "title": "List Helper",
     "items": [
-      "com.malakatonez.list-generator.generate-horizontal",
-      "com.malakatonez.list-generator.generate-vertical",
-      "-",
-      "com.malakatonez.list-generator.reduce-to"
+      {
+        "title": "Generate list",
+        "items": [
+          "com.malakatonez.list-helper.generate-horizontal",
+          "com.malakatonez.list-helper.generate-vertical"
+        ]
+      },
+      "com.malakatonez.list-helper.reduce-to"
     ]
   }
 }

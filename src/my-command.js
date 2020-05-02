@@ -13,6 +13,7 @@ const DIR_H = 2
 
 const isSymbolMaster = layer => layer.class() == 'MSSymbolMaster'
 const isSymbolInstace = layer => layer.class() == 'MSSymbolInstance'
+const isRootElement = element => element != null && element.id.search('/') == -1
 
 const itemName = item => "Item " + (item + 1)
 
@@ -115,21 +116,39 @@ function generateFromSymbol(direction) {
 
 
 
-function hideLastElements (elements, numberToHide) {
-  if (elements == null || numberToHide <= 0) {
+function hideLastElements (instance, numberToHide) {
+  if (instance == null || numberToHide <= 0) {
     return
   }
 
-  // var hidden = 0
+  var hidden = 0
+  var overrides = instance.overrides
+  var length = overrides.length
 
-  var reverseElements = elements.reverse()
-  for (var item = 0; item < 3; item++) {
-    var currentElement = reverseElements[item]
+  for (var item = length-1; item>=0 && hidden!=numberToHide; item--) {
+      var currentElement = overrides[item]
+      // if (currentElement.id.search('/') == -1) { //rootSymbol
+      if (isRootElement(currentElement)) {
+        instance.setOverrideValue(currentElement, '')
+        hidden++
+      }
+  }
+}
 
-    if (currentElement.id.search('/') == -1) { //rootSymbol
-      currentElement.value = ''
+function countRoot (instance) {
+  if (instance == null) {
+    return
+  }
+
+  var count = 0
+  var overrides = instance.overrides
+  for (var i=0; i<overrides.length; i++) {
+    var currentElement = overrides[i]
+    if (isRootElement(currentElement)) {
+      count++
     }
   }
+  return count
 }
 
 
@@ -149,8 +168,53 @@ export function hideListElements() {
     return
   }
 
-//PRUEBA CON 3 (elimina solo el ultimo)
-  hideLastElements(instance.overrides, 3)
-  instance.resizeWithSmartLayout()
+  var isValidNumber = false,
+    exit = false;
+  do {
+    UI.getInputFromUser(
+      "How many items do you want to hide?", {},
+      (err, value) => {
+        if (err) {
+          exit = true
+        } else if (value == null || isNaN(value) || value <= 0) {
+          UI.message('Value must be a number greater than zero')
+        } else {
+          isValidNumber = true
+          hideLastElements(instance, value)
+          //Hay que comprobar que no sean más que los que tiene la instancia??
+          instance.resizeWithSmartLayout()
+        }
+      }
+    )
+  } while (!isValidNumber && !exit);
+}
 
+export function reduceListTo() {
+  var instance = getSelectedSymbolInstance()
+  if (instance == null) {
+    return
+  }
+
+  var rootElements = countRoot(instance)
+
+  var isValidNumber = false,
+    exit = false;
+  do {
+    UI.getInputFromUser(
+      "Number of elements to keep:", {},
+      (err, value) => {
+        if (err) {
+          exit = true
+        } else if (value == null || isNaN(value) || value <= 0) {
+          UI.message('Value must be a number greater than zero')
+        } else if (value >= rootElements) {
+          UI.message('Value must be less than ' + rootElements + '(elements on the list)')
+        } else {
+          isValidNumber = true
+          hideLastElements(instance, rootElements-value)
+          instance.resizeWithSmartLayout()
+        }
+      }
+    )
+  } while (!isValidNumber && !exit);
 }

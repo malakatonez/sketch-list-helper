@@ -5,8 +5,7 @@
   "name": "List Generator",
   "authorEmail": "hola@luciagomez.me",
   "description": "Hola 2",
-  "version": "0.1",
-
+  "version": "0.2",
 
   "commands": [
     {
@@ -32,6 +31,14 @@
         "run":"hideListElements"
       },
       "script": "./my-command.js"
+    },
+    {
+      "name": "Reduce to...",
+      "identifier": "com.malakatonez.list-generator.reduce-to",
+      "handlers":{
+        "run":"reduceListTo"
+      },
+      "script": "./my-command.js"
     }
   ],
   "menu": {
@@ -40,7 +47,7 @@
       "com.malakatonez.list-generator.generate-horizontal",
       "com.malakatonez.list-generator.generate-vertical",
       "-",
-      "com.malakatonez.list-generator.hide-elements"
+      "com.malakatonez.list-generator.reduce-to"
     ]
   }
 }

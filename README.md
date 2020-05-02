@@ -10,9 +10,11 @@ This plugin allows you to save time generating and reducing lists. For the momen
 - Un-zip
 - Double-click on list-generator.sketchplugin
 
-## List generation from item symbol
+## How to use it 
 
-## List reduction to N elements
+### List generation from item symbol
+
+### List reduction to N elements
 
 ## Roadmap & Ideas
 
@@ -20,4 +22,4 @@ List Helper is one of my side projects and I would like to maintain and add new 
 - Change number of visible elements (showing previously hidden)
 - JSON data load
 
-If have an idea to improve List Helper, feel free for opening a pull request or contact with me on [twitter](https://twitter.com/malakatonez) or by [mail me](mailto:hola@luciagomez.me) :)
+If have an idea to improve List Helper, feel free for opening a pull request or contact with me on [twitter](https://twitter.com/malakatonez) or by [mail](mailto:hola@luciagomez.me) :)

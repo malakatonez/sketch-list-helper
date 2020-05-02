@@ -17,7 +17,7 @@ const isRootElement = element => element != null && element.id.search('/') == -1
 
 const itemName = item => "Item " + (item + 1)
 
-
+//TODO: Control number of selected layers
 function getSelectedSymbolMaster() {
   var selectedLayers = doc.selectedLayers
   var selectedObject = context.selection.firstObject();
@@ -27,6 +27,7 @@ function getSelectedSymbolMaster() {
   return null
 }
 
+//TODO: Control number of selected layers
 function getSelectedSymbolInstance() {
   var selectedLayers = doc.selectedLayers
   var selectedObject = context.selection.firstObject();
@@ -38,14 +39,14 @@ function getSelectedSymbolInstance() {
 
 
 //TODO: AÑADIR CONTROLES DE ERROR
-function getSelectedLayer() {
-  var layers = doc.selectedLayers
-  if (layers.length == 1) {
-    return layers.layers[0]
-  } else {
-    UI.message("Please select only one symbol")
-  }
-}
+// function getSelectedLayer() {
+//   var layers = doc.selectedLayers
+//   if (layers.length == 1) {
+//     return layers.layers[0]
+//   } else {
+//     UI.message("Please select only one symbol")
+//   }
+// }
 
 
 function createList(direction, symbolMaster, items) {
@@ -162,33 +163,8 @@ export function generateVertical() {
   generateFromSymbol(DIR_V)
 }
 
-export function hideListElements() {
-  var instance = getSelectedSymbolInstance()
-  if (instance == null) {
-    return
-  }
-
-  var isValidNumber = false,
-    exit = false;
-  do {
-    UI.getInputFromUser(
-      "How many items do you want to hide?", {},
-      (err, value) => {
-        if (err) {
-          exit = true
-        } else if (value == null || isNaN(value) || value <= 0) {
-          UI.message('Value must be a number greater than zero')
-        } else {
-          isValidNumber = true
-          hideLastElements(instance, value)
-          //Hay que comprobar que no sean más que los que tiene la instancia??
-          instance.resizeWithSmartLayout()
-        }
-      }
-    )
-  } while (!isValidNumber && !exit);
-}
-
+//TODO Comprobar que es una lista de elementos (mirando el id de los root)
+//TODO Comprobar que count es mayor que 1
 export function reduceListTo() {
   var instance = getSelectedSymbolInstance()
   if (instance == null) {
@@ -212,6 +188,34 @@ export function reduceListTo() {
         } else {
           isValidNumber = true
           hideLastElements(instance, rootElements-value)
+          instance.resizeWithSmartLayout()
+        }
+      }
+    )
+  } while (!isValidNumber && !exit);
+}
+
+//Unused mehtod
+export function hideListElements() {
+  var instance = getSelectedSymbolInstance()
+  if (instance == null) {
+    return
+  }
+
+  var isValidNumber = false,
+    exit = false;
+  do {
+    UI.getInputFromUser(
+      "How many items do you want to hide?", {},
+      (err, value) => {
+        if (err) {
+          exit = true
+        } else if (value == null || isNaN(value) || value <= 0) {
+          UI.message('Value must be a number greater than zero')
+        } else {
+          isValidNumber = true
+          hideLastElements(instance, value)
+          //Hay que comprobar que no sean más que los que tiene la instancia??
           instance.resizeWithSmartLayout()
         }
       }

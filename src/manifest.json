@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/BohemianCoding/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
   "icon": "icon.png",
   "identifier": "com.malakatonez.list-generator",
-  "name": "List Generator",
+  "name": "List Helper",
   "authorEmail": "hola@luciagomez.me",
   "description": "Hola 2",
   "version": "0.2",
@@ -42,7 +42,7 @@
     }
   ],
   "menu": {
-    "title": "List Generator",
+    "title": "List Helper",
     "items": [
       "com.malakatonez.list-generator.generate-horizontal",
       "com.malakatonez.list-generator.generate-vertical",

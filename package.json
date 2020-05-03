@@ -1,7 +1,7 @@
 {
   "name": "list-helper",
   "description": "Generate and manage list easily",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "engines": {
     "sketch": ">=49.0"
   },
@@ -9,7 +9,7 @@
     "name": "list-helper",
     "manifest": "src/manifest.json",
     "main": "list-helper.sketchplugin",
-    "repository" : {
+    "repository": {
       "type": "git",
       "url": "git+https://github.com/malakatonez/sketch-list-helper.git"
     },

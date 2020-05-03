@@ -1,14 +1,14 @@
 {
-  "name": "list-generator",
+  "name": "list-helper",
   "description": "",
   "version": "0.1.0",
   "engines": {
     "sketch": ">=49.0"
   },
   "skpm": {
-    "name": "list-generator",
+    "name": "list-helper",
     "manifest": "src/manifest.json",
-    "main": "list-generator.sketchplugin",
+    "main": "list-helper.sketchplugin",
     "assets": [
       "assets/**/*"
     ],

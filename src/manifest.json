@@ -4,7 +4,7 @@
   "identifier": "com.malakatonez.list-helper",
   "name": "List Helper",
   "authorEmail": "hola@luciagomez.me",
-  "description": "Hola 2",
+  "description": "Generate and manage list easily",
   "version": "1.0",
 
   "commands": [

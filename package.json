@@ -9,6 +9,7 @@
     "name": "list-helper",
     "manifest": "src/manifest.json",
     "main": "list-helper.sketchplugin",
+    "repository": "https://github.com/malakatonez/sketch-list-helper.git",
     "assets": [
       "assets/**/*"
     ],

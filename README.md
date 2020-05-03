@@ -6,9 +6,9 @@ This plugin allows you to save time generating and reducing lists. For the momen
 
 ## Installation
 
-- [Download](../../releases/latest/download/list-generator.sketchplugin.zip) the latest release of the plugin
+- [Download](https://github.com/malakatonez/sketch-list-helper/archive/master.zip) the latest release of the plugin
 - Un-zip
-- Double-click on list-generator.sketchplugin
+- Double-click on list-helper.sketchplugin
 
 ## How to use it
 

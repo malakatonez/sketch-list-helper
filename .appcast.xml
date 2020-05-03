@@ -7,5 +7,8 @@
     <item>
       <enclosure url="https://github.com/malakatonez/sketch-list-helper/releases/download/v1.0.0/list-helper.sketchplugin.zip" sparkle:version="1.0.0"/>
     </item>
+    <item>
+      <enclosure url="https://github.com/malakatonez/sketch-list-helper/releases/download/v1.0.0/list-helper.sketchplugin.zip" sparkle:version="1.0.0"/>
+    </item>
   </channel>
 </rss>

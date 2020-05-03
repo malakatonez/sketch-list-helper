@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/BohemianCoding/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
+  "icon": "icon.png",
+  "identifier": "com.malakatonez.list-helper",
+  "name": "List Helper",
+  "authorEmail": "hola@luciagomez.me",
+  "description": "Hola 2",
+  "version": "1.0",
+  "commands": [
+    {
+      "name": "Vertical",
+      "identifier": "com.malakatonez.list-helper.generate-vertical",
+      "handlers": {
+        "run": "generateVertical"
+      },
+      "script": "__my-command.js"
+    },
+    {
+      "name": "Horizontal",
+      "identifier": "com.malakatonez.list-helper.generate-horizontal",
+      "handlers": {
+        "run": "generateHorizontal"
+      },
+      "script": "__my-command.js"
+    },
+    {
+      "name": "Reduce to...",
+      "identifier": "com.malakatonez.list-helper.reduce-to",
+      "handlers": {
+        "run": "reduceListTo"
+      },
+      "script": "__my-command.js"
+    }
+  ],
+  "menu": {
+    "title": "List Helper",
+    "items": [
+      {
+        "title": "Generate list",
+        "items": [
+          "com.malakatonez.list-helper.generate-horizontal",
+          "com.malakatonez.list-helper.generate-vertical"
+        ]
+      },
+      "com.malakatonez.list-helper.reduce-to"
+    ]
+  },
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml"
+}

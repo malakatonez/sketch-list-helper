@@ -16,13 +16,14 @@ This plugin allows you to save time generating and reducing lists. For the momen
 Create an symbol with your item list. Select Plugins > List Helper > Generate and choose direction. List Helper requires number of elements, creates a new symbol with the list and applies SmartLayout.
 You can create instances of the list symbol and reduce the number of elements with the reduction feature (enlace a esa sección)
 
-<GIF>
+![](../../assets/generate_vertical.gif)
+![](../../assets/generate_horizontal.gif)
 
 ### List reduction to N elements
 This feature allows you to hide some items at the same time in an instance that contains a list. They aren't removed from the master symbol, you can show them again on the right toolbar.
 Select Plugins > List Helper > Reduce to... and insert the number of elements you want to see on the list. List Helper will hide the rest.
 
-<GIF>
+![](../../assets/reduceto_full.gif)
 
 ## Roadmap & Ideas
 
